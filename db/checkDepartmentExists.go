@@ -21,7 +21,8 @@ func CheckDepartmentExists(valor string, id bool) (models.Departments, bool, str
 	var condicion primitive.M
 
 	if id {
-		condicion = bson.M{"_id": valor}
+		idHex, _ := primitive.ObjectIDFromHex(valor)
+		condicion = bson.M{"_id": idHex}
 	} else {
 		condicion = bson.M{"nombre": valor}
 	}

@@ -34,7 +34,7 @@ func GenerateJWT(t models.ReturnUser) (string, error) {
 	}
 
 	// Generar Token
-	token := jwt.NewWithClaims(jwt.SigningMethodES256, payload)
+	token := jwt.NewWithClaims(jwt.SigningMethodHS256, payload)
 
 	// Asignar firma
 	tokenStr, err := token.SignedString(myKey)

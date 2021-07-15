@@ -20,7 +20,8 @@ func CheckTypeUserExists(valor string, id bool) (models.TypeUsers, bool, string)
 
 	var condicion primitive.M
 	if id {
-		condicion = bson.M{"_id": valor}
+		idHex, _ := primitive.ObjectIDFromHex(valor)
+		condicion = bson.M{"_id": idHex}
 	} else {
 		condicion = bson.M{"titulo": valor}
 	}

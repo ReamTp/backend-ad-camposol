@@ -15,6 +15,8 @@ import (
 func Controladores() {
 	router := mux.NewRouter()
 
+	router.HandleFunc("/login", middleware.CheckDB(routers.Login)).Methods("POST")
+
 	router.HandleFunc("/insert/user", middleware.CheckDB(routers.CreateUser)).Methods("POST")
 	router.HandleFunc("/insert/tuser", middleware.CheckDB(routers.CreateTypeUser)).Methods("POST")
 	router.HandleFunc("/insert/department", middleware.CheckDB(routers.CreateDepartment)).Methods("POST")
